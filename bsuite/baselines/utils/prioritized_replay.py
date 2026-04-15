@@ -55,7 +55,11 @@ class SumSegmentTree:
     index = 0
     while 2 * index + 1 < len(self._tree):
       left = 2 * index + 1
-      if value <= self._tree[left]:
+      # Prefix-sum lookup should go left only when `value` lies strictly
+      # inside the left subtree's mass. Using `<=` lets exact boundary values
+      # drift into zero-mass padded leaves when the tree capacity is larger
+      # than the replay capacity.
+      if value < self._tree[left]:
         index = left
       else:
         value -= self._tree[left]
@@ -153,10 +157,14 @@ class PrioritizedReplay:
       if np.random.rand() < self._uniform_sample_probability:
         indices[i] = np.random.randint(self.size)
       else:
-        low = i * segment
-        high = (i + 1) * segment
-        mass = np.random.uniform(low, high)
-        indices[i] = self._sum_tree.find_prefix_sum(mass)
+        while True:
+          low = i * segment
+          high = (i + 1) * segment
+          mass = np.random.uniform(low, high)
+          index = self._sum_tree.find_prefix_sum(mass)
+          if index < self.size:
+            indices[i] = index
+            break
 
     transitions = [slot[indices] for slot in self._data]
     probabilities = np.asarray(

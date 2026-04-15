@@ -38,13 +38,13 @@ class InterfaceTest(test_utils.EnvironmentTestMixin, absltest.TestCase):
 class MoatRewardTest(absltest.TestCase):
 
   def test_crossing_moat_reaches_positive_goal(self):
-    env = moat.Moat(moat_length=5, move_cost=0.5, goal_reward=1.0)
+    env = moat.Moat(moat_length=5, moat_cost=0.5, goal_reward=1.0)
     timestep = env.reset()
     rewards = []
     while not timestep.last():
       timestep = env.step(0)
       rewards.append(timestep.reward)
-    self.assertEqual(rewards, [-0.5, 1.0])
+    self.assertEqual(rewards, [-0.5, 0.0, 1.0])
 
   def test_multiple_crossings_are_counted(self):
     env = moat.Moat(moat_length=5)
@@ -59,6 +59,11 @@ class MoatRewardTest(absltest.TestCase):
 
   def test_starts_in_middle_of_chain(self):
     env = moat.Moat(moat_length=7)
+    timestep = env.reset()
+    self.assertEqual(np.argmax(timestep.observation), 3)
+
+  def test_smallest_chain_starts_right_of_moat(self):
+    env = moat.Moat(moat_length=4)
     timestep = env.reset()
     self.assertEqual(np.argmax(timestep.observation), 3)
 

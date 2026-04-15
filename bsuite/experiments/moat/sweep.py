@@ -17,5 +17,5 @@
 
 NUM_EPISODES = 10000
 
-SETTINGS = tuple({'moat_length': n} for n in range(4, 101, 2))
+SETTINGS = tuple({'moat_length': n} for n in range(4, 101, 4))
 TAGS = ('exploration',)

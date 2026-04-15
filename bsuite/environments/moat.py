@@ -26,27 +26,28 @@ import numpy as np
 
 
 class Moat(base.Environment):
-  """A 1D chain with a single negative moat edge guarding a positive goal."""
+  """A 1D chain with a moat, a neutral gap, and a positive goal."""
 
   def __init__(self,
                moat_length: int,
-               move_cost: float = 0.1,
+               moat_cost: float = 0.1,
                goal_reward: float = 1.0):
     super().__init__()
-    if moat_length < 3:
-      raise ValueError('moat_length must be at least 3.')
-    if move_cost < 0:
-      raise ValueError('move_cost must be non-negative.')
+    if moat_length < 4:
+      raise ValueError('moat_length must be at least 4.')
+    if moat_cost < 0:
+      raise ValueError('moat_cost must be non-negative.')
     if goal_reward <= 0:
       raise ValueError('goal_reward must be positive.')
 
     self._moat_length = moat_length
-    self._move_cost = move_cost
+    self._moat_cost = moat_cost
     self._goal_reward = goal_reward
 
     self._goal_position = 0
-    self._moat_position = 1
-    self._start_position = moat_length // 2
+    self._gap_position = 1
+    self._moat_position = 2
+    self._start_position = max(self._moat_position + 1, moat_length // 2)
     self._episode_len = moat_length ** 2
 
     self._position = self._start_position
@@ -79,9 +80,9 @@ class Moat(base.Environment):
 
     reward = 0.
     if old_position == self._moat_position + 1 and self._position == self._moat_position:
-      reward -= self._move_cost
+      reward -= self._moat_cost
       self._total_moat_crossings += 1
-    elif old_position == self._moat_position and self._position == self._goal_position:
+    elif old_position == self._gap_position and self._position == self._goal_position:
       reward += self._goal_reward
 
     observation = self._get_observation()
@@ -107,7 +108,7 @@ class Moat(base.Environment):
 
   @property
   def optimal_return(self):
-    return self._goal_reward - self._move_cost
+    return self._goal_reward - self._moat_cost
 
   def bsuite_info(self) -> Dict[str, Any]:
     return dict(
