@@ -38,6 +38,8 @@ from typing import Any, Dict, Mapping, Tuple
 from bsuite.experiments.bandit import sweep as bandit_sweep
 from bsuite.experiments.bandit_noise import sweep as bandit_noise_sweep
 from bsuite.experiments.bandit_scale import sweep as bandit_scale_sweep
+from bsuite.experiments.breadcrumb import sweep as breadcrumb_sweep
+from bsuite.experiments.breadcrumb_trap import sweep as breadcrumb_trap_sweep
 from bsuite.experiments.cartpole import sweep as cartpole_sweep
 from bsuite.experiments.cartpole_noise import sweep as cartpole_noise_sweep
 from bsuite.experiments.cartpole_scale import sweep as cartpole_scale_sweep
@@ -53,6 +55,7 @@ from bsuite.experiments.memory_size import sweep as memory_size_sweep
 from bsuite.experiments.mnist import sweep as mnist_sweep
 from bsuite.experiments.mnist_noise import sweep as mnist_noise_sweep
 from bsuite.experiments.mnist_scale import sweep as mnist_scale_sweep
+from bsuite.experiments.moat import sweep as moat_sweep
 from bsuite.experiments.mountain_car import sweep as mountain_car_sweep
 from bsuite.experiments.mountain_car_noise import sweep as mountain_car_noise_sweep
 from bsuite.experiments.mountain_car_scale import sweep as mountain_car_scale_sweep
@@ -109,6 +112,8 @@ def _parse_sweep(experiment_package) -> Tuple[BSuiteId, ...]:
 BANDIT = _parse_sweep(bandit_sweep)
 BANDIT_NOISE = _parse_sweep(bandit_noise_sweep)
 BANDIT_SCALE = _parse_sweep(bandit_scale_sweep)
+BREADCRUMB = _parse_sweep(breadcrumb_sweep)
+BREADCRUMB_TRAP = _parse_sweep(breadcrumb_trap_sweep)
 CARTPOLE = _parse_sweep(cartpole_sweep)
 CARTPOLE_NOISE = _parse_sweep(cartpole_noise_sweep)
 CARTPOLE_SCALE = _parse_sweep(cartpole_scale_sweep)
@@ -124,6 +129,7 @@ MEMORY_SIZE = _parse_sweep(memory_size_sweep)
 MNIST = _parse_sweep(mnist_sweep)
 MNIST_NOISE = _parse_sweep(mnist_noise_sweep)
 MNIST_SCALE = _parse_sweep(mnist_scale_sweep)
+MOAT = _parse_sweep(moat_sweep)
 MOUNTAIN_CAR = _parse_sweep(mountain_car_sweep)
 MOUNTAIN_CAR_NOISE = _parse_sweep(mountain_car_noise_sweep)
 MOUNTAIN_CAR_SCALE = _parse_sweep(mountain_car_scale_sweep)

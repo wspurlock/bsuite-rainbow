@@ -20,6 +20,8 @@ from typing import Callable, Mapping, NamedTuple, Optional, Sequence, Union
 from bsuite.experiments.bandit import analysis as bandit_analysis
 from bsuite.experiments.bandit_noise import analysis as bandit_noise_analysis
 from bsuite.experiments.bandit_scale import analysis as bandit_scale_analysis
+from bsuite.experiments.breadcrumb import analysis as breadcrumb_analysis
+from bsuite.experiments.breadcrumb_trap import analysis as breadcrumb_trap_analysis
 from bsuite.experiments.cartpole import analysis as cartpole_analysis
 from bsuite.experiments.cartpole_noise import analysis as cartpole_noise_analysis
 from bsuite.experiments.cartpole_scale import analysis as cartpole_scale_analysis
@@ -35,6 +37,7 @@ from bsuite.experiments.memory_size import analysis as memory_size_analysis
 from bsuite.experiments.mnist import analysis as mnist_analysis
 from bsuite.experiments.mnist_noise import analysis as mnist_noise_analysis
 from bsuite.experiments.mnist_scale import analysis as mnist_scale_analysis
+from bsuite.experiments.moat import analysis as moat_analysis
 from bsuite.experiments.mountain_car import analysis as mountain_car_analysis
 from bsuite.experiments.mountain_car_noise import analysis as mountain_car_noise_analysis
 from bsuite.experiments.mountain_car_scale import analysis as mountain_car_scale_analysis
@@ -73,6 +76,8 @@ BSUITE_INFO = dict(
     bandit=_parse_bsuite(bandit_analysis),
     bandit_noise=_parse_bsuite(bandit_noise_analysis),
     bandit_scale=_parse_bsuite(bandit_scale_analysis),
+    breadcrumb=_parse_bsuite(breadcrumb_analysis),
+    breadcrumb_trap=_parse_bsuite(breadcrumb_trap_analysis),
     cartpole=_parse_bsuite(cartpole_analysis),
     cartpole_noise=_parse_bsuite(cartpole_noise_analysis),
     cartpole_scale=_parse_bsuite(cartpole_scale_analysis),
@@ -88,6 +93,7 @@ BSUITE_INFO = dict(
     mnist=_parse_bsuite(mnist_analysis),
     mnist_noise=_parse_bsuite(mnist_noise_analysis),
     mnist_scale=_parse_bsuite(mnist_scale_analysis),
+    moat=_parse_bsuite(moat_analysis),
     mountain_car=_parse_bsuite(mountain_car_analysis),
     mountain_car_noise=_parse_bsuite(mountain_car_noise_analysis),
     mountain_car_scale=_parse_bsuite(mountain_car_scale_analysis),
@@ -182,7 +188,14 @@ def _gen_ordered_experiments() -> Sequence[str]:
   basics = ['bandit', 'mnist', 'catch', 'mountain_car', 'cartpole']
   noise = [env + '_noise' for env in basics]
   scale = [env + '_scale' for env in basics]
-  explore = ['deep_sea', 'deep_sea_stochastic', 'cartpole_swingup']
+  explore = [
+      'deep_sea',
+      'deep_sea_stochastic',
+      'cartpole_swingup',
+      'moat',
+      'breadcrumb',
+      'breadcrumb_trap',
+  ]
   credit = ['umbrella_length', 'umbrella_distract', 'discounting_chain']
   memory = ['memory_len', 'memory_size']
   return basics + noise + scale + explore + credit + memory

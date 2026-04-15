@@ -22,6 +22,8 @@ from bsuite.environments import base
 from bsuite.experiments.bandit import bandit
 from bsuite.experiments.bandit_noise import bandit_noise
 from bsuite.experiments.bandit_scale import bandit_scale
+from bsuite.experiments.breadcrumb import breadcrumb
+from bsuite.experiments.breadcrumb_trap import breadcrumb_trap
 from bsuite.experiments.cartpole import cartpole
 from bsuite.experiments.cartpole_noise import cartpole_noise
 from bsuite.experiments.cartpole_scale import cartpole_scale
@@ -37,6 +39,7 @@ from bsuite.experiments.memory_size import memory_size
 from bsuite.experiments.mnist import mnist
 from bsuite.experiments.mnist_noise import mnist_noise
 from bsuite.experiments.mnist_scale import mnist_scale
+from bsuite.experiments.moat import moat
 from bsuite.experiments.mountain_car import mountain_car
 from bsuite.experiments.mountain_car_noise import mountain_car_noise
 from bsuite.experiments.mountain_car_scale import mountain_car_scale
@@ -58,6 +61,8 @@ EXPERIMENT_NAME_TO_ENVIRONMENT = dict(
     bandit=bandit.load,
     bandit_noise=bandit_noise.load,
     bandit_scale=bandit_scale.load,
+    breadcrumb=breadcrumb.load,
+    breadcrumb_trap=breadcrumb_trap.load,
     cartpole=cartpole.load,
     cartpole_noise=cartpole_noise.load,
     cartpole_scale=cartpole_scale.load,
@@ -73,6 +78,7 @@ EXPERIMENT_NAME_TO_ENVIRONMENT = dict(
     mnist=mnist.load,
     mnist_noise=mnist_noise.load,
     mnist_scale=mnist_scale.load,
+    moat=moat.load,
     mountain_car=mountain_car.load,
     mountain_car_noise=mountain_car_noise.load,
     mountain_car_scale=mountain_car_scale.load,
