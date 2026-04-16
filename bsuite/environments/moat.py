@@ -48,7 +48,7 @@ class Moat(base.Environment):
     self._gap_position = 1
     self._moat_position = 2
     self._start_position = max(self._moat_position + 1, moat_length // 2)
-    self._episode_len = moat_length ** 2
+    self._episode_len = moat_length
 
     self._position = self._start_position
     self._timestep = 0

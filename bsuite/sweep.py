@@ -39,6 +39,7 @@ from bsuite.experiments.bandit import sweep as bandit_sweep
 from bsuite.experiments.bandit_noise import sweep as bandit_noise_sweep
 from bsuite.experiments.bandit_scale import sweep as bandit_scale_sweep
 from bsuite.experiments.breadcrumb import sweep as breadcrumb_sweep
+from bsuite.experiments.breadcrumb_noise import sweep as breadcrumb_noise_sweep
 from bsuite.experiments.breadcrumb_trap import sweep as breadcrumb_trap_sweep
 from bsuite.experiments.cartpole import sweep as cartpole_sweep
 from bsuite.experiments.cartpole_noise import sweep as cartpole_noise_sweep
@@ -113,6 +114,7 @@ BANDIT = _parse_sweep(bandit_sweep)
 BANDIT_NOISE = _parse_sweep(bandit_noise_sweep)
 BANDIT_SCALE = _parse_sweep(bandit_scale_sweep)
 BREADCRUMB = _parse_sweep(breadcrumb_sweep)
+BREADCRUMB_NOISE = _parse_sweep(breadcrumb_noise_sweep)
 BREADCRUMB_TRAP = _parse_sweep(breadcrumb_trap_sweep)
 CARTPOLE = _parse_sweep(cartpole_sweep)
 CARTPOLE_NOISE = _parse_sweep(cartpole_noise_sweep)

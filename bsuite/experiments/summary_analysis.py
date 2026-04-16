@@ -21,6 +21,7 @@ from bsuite.experiments.bandit import analysis as bandit_analysis
 from bsuite.experiments.bandit_noise import analysis as bandit_noise_analysis
 from bsuite.experiments.bandit_scale import analysis as bandit_scale_analysis
 from bsuite.experiments.breadcrumb import analysis as breadcrumb_analysis
+from bsuite.experiments.breadcrumb_noise import analysis as breadcrumb_noise_analysis
 from bsuite.experiments.breadcrumb_trap import analysis as breadcrumb_trap_analysis
 from bsuite.experiments.cartpole import analysis as cartpole_analysis
 from bsuite.experiments.cartpole_noise import analysis as cartpole_noise_analysis
@@ -77,6 +78,7 @@ BSUITE_INFO = dict(
     bandit_noise=_parse_bsuite(bandit_noise_analysis),
     bandit_scale=_parse_bsuite(bandit_scale_analysis),
     breadcrumb=_parse_bsuite(breadcrumb_analysis),
+    breadcrumb_noise=_parse_bsuite(breadcrumb_noise_analysis),
     breadcrumb_trap=_parse_bsuite(breadcrumb_trap_analysis),
     cartpole=_parse_bsuite(cartpole_analysis),
     cartpole_noise=_parse_bsuite(cartpole_noise_analysis),
@@ -194,6 +196,7 @@ def _gen_ordered_experiments() -> Sequence[str]:
       'cartpole_swingup',
       'moat',
       'breadcrumb',
+      'breadcrumb_noise',
       'breadcrumb_trap',
   ]
   credit = ['umbrella_length', 'umbrella_distract', 'discounting_chain']

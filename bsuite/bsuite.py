@@ -23,6 +23,7 @@ from bsuite.experiments.bandit import bandit
 from bsuite.experiments.bandit_noise import bandit_noise
 from bsuite.experiments.bandit_scale import bandit_scale
 from bsuite.experiments.breadcrumb import breadcrumb
+from bsuite.experiments.breadcrumb_noise import breadcrumb_noise
 from bsuite.experiments.breadcrumb_trap import breadcrumb_trap
 from bsuite.experiments.cartpole import cartpole
 from bsuite.experiments.cartpole_noise import cartpole_noise
@@ -62,6 +63,7 @@ EXPERIMENT_NAME_TO_ENVIRONMENT = dict(
     bandit_noise=bandit_noise.load,
     bandit_scale=bandit_scale.load,
     breadcrumb=breadcrumb.load,
+    breadcrumb_noise=breadcrumb_noise.load,
     breadcrumb_trap=breadcrumb_trap.load,
     cartpole=cartpole.load,
     cartpole_noise=cartpole_noise.load,
